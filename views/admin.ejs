@@ -1,0 +1,342 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="/js/admin.js"></script>
+    <script src="/js/ajax.js"></script>
+
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <section class="class_addProducts" id="class_addProducts">
+
+
+        <section class="total_section">
+
+            <div class="btn_addProducts_div">
+                <button class="btn_addProducts" id="btn_addProducts">Add Product</button>
+            </div>
+            <div class="btn_itemsManager_div">
+                <button class="btn_itemsManager" id="btn_itemsManager">Items Manager</button>
+            </div>
+
+            <button class="btn_addCategoryNav" id="btn_addCategoryNav">Add Category</button>
+
+            <div class="main_total_div">
+                <!-- <div>Category:</div> -->
+                <select id="item_category_select_filter" class="item_category_select_filter">
+
+                  <option value="all">All</option>
+              </select>
+            </div>
+
+
+            <div class="main_search_div">
+                <input type="text" class="search_input" id="search_input_item" placeholder="Search....ItemName, Category" spellcheck="false" autocomplete="off">
+                <!-- <input type="image" src="/img/search.png" id="search_btn_item" class="search_btn"> -->
+
+                <button class="btn_search_admin_order" id="btn_search_admin_order">Search</button>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        </section>
+
+        <div class="header_div" id="header_div">
+            <div class="client_div">Product Name</div>
+            <div class="date_div">Price</div>
+            <div class="amount_div" style="width: 20%;">Product Code</div>
+            <div class="date_div">Update</div>
+
+
+
+        </div>
+
+        <div class="main_component_holder_div" id="main_component_holder_div_item"></div>
+
+
+        <section class="container_update_item" id="container_update_item">
+            <div class="container_update_item_div">
+                <input type="image" src="/system_img/wrong.png" id="close_form1" class="exit" width="22" height="22">
+                <div>Add New Product</div>
+                <!-- <iframe id="myFrame1" type="application/pdf" width="100%" height="400px" style="margin-top:4% ;">
+            </iframe> -->
+
+                <div class="container_update_item_div_table">
+                    <label for="item_name_input">Item Name:</label>
+                    <input type="text" name="item_name_input" class="item_name_input" id="item_name_input">
+
+                    <label for="item_price_input" style="margin-top: 2%;">Price:</label>
+                    <input type="number" name="item_price_input" class="item_name_input" id="item_price_input">
+
+                    <label for="item_specification_input" style="margin-top: 2%;">Specifications:</label>
+                    <input type="text" name="item_spec1_input" class="item_name_input" id="item_spec1_input" placeholder="Spec. Name">
+                    <input type="text" name="item_spec2_input" class="item_name_input" id="item_spec2_input" placeholder="Spec. Value">
+                    <div style="width: 100%;justify-content: center;
+                    text-align: center;
+                    margin-top: 1%;">
+                        <button class="btn_addSpecification" id="btn_addSpecification">Add Specs..</button>
+                    </div>
+                    <div class="div_specification" id="div_specification"></div>
+
+
+
+                    <label for="item_description_input" style="margin-top: 2%;">Description:</label>
+                    <!-- <input type="text" name="item_description_input" class="item_name_input" id="item_descripti
+                        on_input"> -->
+                    <textarea name="item_description_input" id="item_description_input" cols="50" rows="5" class="7" style="resize: none;"></textarea>
+
+
+                    <label for="item_image_input" style="margin-top: 2%;">Image:</label>
+                    <!-- <input type="text" name="item_rate_input" class="item_name_input" id="item_rate_input"> -->
+                    <input class="img_product" type="file" name="img_product" id="img_product" accept="image/jpeg ,image/jpg ,image/png ,image/webp" />
+
+
+
+                    <label for="item_size_input" style="margin-top: 3%;">Product Size:</label>
+                    <input type="text" name="item_size_input" class="item_name_input" id="item_size_input" style="width: 40%;height: 25px;
+                    margin-top: 2%;margin-left: 2%;">
+                    <button class="btn_addSize" id="btn_addSize">Add Size</button>
+                    <div class="div_size_object" id="div_size_object"></div>
+
+
+                    <label for="item_category_input" style="margin-top: 1%;">Category:</label>
+                    <div style="display: flex;flex-wrap: wrap;width: 80%;">
+                        <select id="item_category_select" class="item_category_select">
+
+                    </select>
+
+                        <button class="addCategoryButton" id="addCategoryButton">New Category</button>
+                    </div>
+
+                    <div class="newCategoryItem_div" id="newCategoryItem_div">
+                        <input type="text" id="newCategoryItem" placeholder="Enter New Category">
+                    </div>
+
+
+                    <label for="item_tags_input" style="margin-top: 3%;">Product Tags:</label>
+                    <input type="text" name="item_tags_input" class="item_name_input" id="item_tags_input" style="width: 40%;height: 25px;
+                    margin-top: 2%;margin-left: 2%;">
+                    <button class="btn_addSize" id="btn_addTags">Add Tags</button>
+                    <div class="div_size_object" id="div_tags_object"></div>
+
+
+                    <label class="switch">
+    <input type="checkbox" id="checkbox_status">
+    <span class="slider round"></span>
+  </label><span style="margin-left:10px;margin-top: 2px;">Add to Recent</span>
+
+                    <div style="width: 100%;justify-content: center;text-align: center;">
+                        <button class="submitUpdateItemButton" id="submitUpdateItemButton">Submit</button>
+                    </div>
+
+                    <div style="width: 100%;justify-content: center;text-align: center;margin-top: 3.5%;">
+                        <div id="updateDoneStatus"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+
+    </section>
+
+    <section class="container_orderView_item" id="container_orderView_item">
+        <div class="container_orderView_item_div" id="container_orderView_item_div">
+            <input type="image" src="/system_img/cross.png" id="close_form2" class="exit1" width="22" height="22">
+            <div>Order Details</div>
+            <!-- <iframe id="myFrame1" type="application/pdf" width="100%" height="400px" style="margin-top:4% ;">
+    </iframe> -->
+
+            <div class="container_orderView_item_div_table" id="container_orderView_item_div_table">
+
+                <div class="product_name_div_main" style="min-height: 25px;">
+                    <div style="font-size: 14px;">Product Name :</div>
+                    <div id="product_name_div" class="product_name_div_class"></div>
+                </div>
+
+                <div class="product_size_div_main" id="product_size_div_main" style="min-height: 25px;">
+                    <div class="product_size_div_second">
+                        <div style="font-size: 14px;">Size :</div>
+                        <div id="product_size_div" class="product_size_div_class"></div>
+                    </div>
+                </div>
+
+                <div class="product_name_div_main" style="min-height: 25px;">
+                    <div style="font-size: 14px;">Date :</div>
+                    <div id="product_date_div" class="product_date_div_class"></div>
+                </div>
+
+                <div class="product_name_div_main" style="min-height: 25px;">
+                    <div style="font-size: 14px;">Code :</div>
+                    <div id="product_uuid_div" class="product_uuid_div_class"></div>
+                </div>
+
+
+                <div class="product_name_div_main" style="min-height: 25px; margin-top: 4%;">
+                    <div style="font-size: 14px;">Total :</div>
+                    <div id="product_total_div" class="product_total_div_class"></div>
+                </div>
+
+
+                <div style="margin-top:2%;width: 100%;">
+                    <div class="product_name_div_main" style="min-height: 25px;">
+                        <div style="font-size: 14px;">Client Name :</div>
+                        <div id="product_client_name_div_class" class="product_client_name_div_class"></div>
+                    </div>
+
+                    <div class="product_name_div_main" style="min-height: 25px;">
+                        <div style="font-size: 14px;">Client Mobile :</div>
+                        <div id="product_client_mobile_div_class" class="product_client_mobile_div_class"></div>
+                    </div>
+
+                    <div class="product_name_div_main" style="min-height: 25px;">
+                        <div style="font-size: 14px;">Client Email :</div>
+                        <div id="product_client_email_div_class" class="product_client_email_div_class"></div>
+                    </div>
+
+                    <div class="product_name_div_main" style="min-height: 25px;">
+                        <div style="font-size: 14px;">Client Address :</div>
+                        <div id="product_client_address_div_class" class="product_client_address_div_class"></div>
+                    </div>
+
+                    <div class="product_name_div_main" style="min-height: 25px;">
+                        <div style="font-size: 14px;">Client PinCode :</div>
+                        <div id="product_client_pincode_div_class" class="product_client_pincode_div_class"></div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Add new category -->
+    <section class="container_addCategory" id="container_addCategory">
+        <div class="container_addCategory_div" id="container_addCategory_div">
+            <input type="image" src="/system_img/cross.png" id="close_form3" class="exit1" width="22" height="22">
+            <div>Add New Category</div>
+
+
+            <div class="container_addCategory_div_table" id="container_addCategory_div_table">
+
+
+                <label for="category_name_input">Category Name:</label>
+                <input type="text" name="category_name_input" class="item_name_input" id="category_name_input">
+
+                <label for="category_image_input1" style="margin-top: 2%;">Image:</label>
+                <!-- <input type="text" name="item_rate_input" class="item_name_input" id="item_rate_input"> -->
+                <input class="img_product" type="file" name="category_image_input" id="category_image_input" accept="image/jpeg ,image/jpg ,image/png ,image/webp" />
+
+                <button class="btn_addCategory_submit" id="btn_addCategory_submit">Submit</button>
+
+                <div class="status_addCategory" id="status_addCategory"></div>
+
+                <!-- <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Product Name :</div>
+    <div id="product_name_div" class="product_name_div_class"></div>
+  </div>
+  
+  <div class="product_size_div_main" id="product_size_div_main" style="min-height: 25px;">
+   <div class="product_size_div_second">
+    <div style="font-size: 14px;">Size :</div>
+    <div id="product_size_div" class="product_size_div_class"></div>
+</div>
+  </div>
+  
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Date :</div>
+    <div id="product_date_div" class="product_date_div_class"></div>
+  </div>
+  
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Code :</div>
+    <div id="product_uuid_div" class="product_uuid_div_class"></div>
+  </div>
+  
+  
+  <div class="product_name_div_main" style="min-height: 25px; margin-top: 4%;">
+    <div style="font-size: 14px;">Total :</div>
+    <div id="product_total_div" class="product_total_div_class"></div>
+  </div>
+  
+
+  <div style="margin-top:2%;width: 100%;">
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Client Name :</div>
+    <div id="product_client_name_div_class" class="product_client_name_div_class"></div>
+  </div>
+
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Client Mobile :</div>
+    <div id="product_client_mobile_div_class" class="product_client_mobile_div_class"></div>
+  </div>
+
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Client Email :</div>
+    <div id="product_client_email_div_class" class="product_client_email_div_class"></div>
+  </div>
+
+  <div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Client Address :</div>
+    <div id="product_client_address_div_class" class="product_client_address_div_class"></div>
+  </div>
+
+<div class="product_name_div_main" style="min-height: 25px;">
+    <div style="font-size: 14px;">Client PinCode :</div>
+    <div id="product_client_pincode_div_class" class="product_client_pincode_div_class"></div>
+  </div>
+
+
+</div> -->
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/js/admin.js"></script>
+
+
+</body>
+
+</html>
